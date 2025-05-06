@@ -1,0 +1,13 @@
+{% extends "home/base.html" %}
+
+{% block content %}
+    <h2 class="text-dark">Ваш отзыв</h2>
+    <p>{{ message }}</p>
+    <ul class="text-dark">
+        <li><strong>Оценка сайта:</strong> {{ rating_site }}</li>
+        <li><strong>Оценка дизайна:</strong> {{ rating_design }}</li>
+        <li><strong>Пожелания:</strong> {{ suggestions }}</li>
+        <li><strong>Рекомендуете ли вы сайт:</strong> {{ recommend|yesno:"Да,Нет" }}</li>
+        <li><strong>Тип отзыва:</strong> {{ feedback_type }}</li>
+    </ul>
+{% endblock %}

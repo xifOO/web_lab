@@ -1,0 +1,58 @@
+{% extends "home/base.html" %}
+{% load static %}
+
+{% block title %}О нас - Интернет-магазин часов{% endblock %}
+
+{% block content %}
+<!-- Слайдер -->
+<div id="myCarousel" class="carousel slide mb-5" data-bs-ride="carousel">
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active"></button>
+      <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1"></button>
+      <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2"></button>
+    </div>
+    <div class="carousel-inner rounded shadow" style="max-height: 500px; overflow: hidden;">
+      <div class="carousel-item active">
+        <img src="{% static 'img/watch1.jpg' %}" class="d-block w-100" style="object-fit: cover; height: 500px; object-position: center;" alt="Баннер 1">
+        <div class="carousel-caption d-none d-md-block">
+          <h5>Классика вне времени</h5>
+          <p>Часы, подчёркивающие ваш стиль.</p>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <img src="{% static 'img/watch2.jpg' %}" class="d-block w-100" style="object-fit: cover; height: 500px; object-position: center;" alt="Баннер 2">
+        <div class="carousel-caption d-none d-md-block">
+          <h5>Спортивная элегантность</h5>
+          <p>Надёжность и динамика в каждой детали.</p>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <img src="{% static 'img/watch3.png' %}" class="d-block w-100" style="object-fit: cover; height: 500px; object-position: center;" alt="Баннер 3">
+        <div class="carousel-caption d-none d-md-block">
+          <h5>Технологии будущего</h5>
+          <p>Современные смарт-часы для активных людей.</p>
+        </div>
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon"></span>
+      <span class="visually-hidden">Назад</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
+      <span class="carousel-control-next-icon"></span>
+      <span class="visually-hidden">Вперёд</span>
+    </button>
+  </div>
+  
+
+<!-- Основной контент -->
+<div class="text-center">
+    <h2 class="fw-bold text-black">О нашем магазине</h2>
+    <p class="lead text-black">Лучшие наручные часы от мировых брендов</p>
+</div>
+
+<div class="text-center mt-4">
+    <p class="text-black">Покупая у нас, вы получаете <strong>официальную гарантию</strong> и <strong>бесплатную доставку</strong> при заказе от 5000 рублей.</p>
+    <a href="{% url 'home:links' %}" class="btn btn-outline-secondary">Полезные ссылки</a>
+</div>
+{% endblock %}

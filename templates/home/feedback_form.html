@@ -1,0 +1,51 @@
+{% extends "home/base.html" %}
+{% load static %}
+
+{% block content %}
+    <script>
+        $(document).ready(function() {
+            $('#submit-button').hover(
+                function() { 
+                    $(this).css('color', 'white');
+                    $(this).css('background-color', 'green');
+                }, 
+                function() { 
+                    $(this).css('color', 'black'); 
+                    $(this).css('background-color', ''); 
+                }
+            );
+        
+            $('input, textarea, select').focus(function() {
+                $(this).css('background-color', '#ffffcc'); 
+            });
+        
+            $('input, textarea, select').blur(function() {
+                $(this).css('background-color', ''); 
+            });
+        });
+    </script>
+    <div class="container mt-5">
+        <h2 class="text-center text-black">Оставьте свой отзыв</h2>
+
+        {% if form != None %}
+            <form method="post" class="mt-4 text-dark">
+                {% csrf_token %}
+                <div class="mb-3">
+                    {{ form.as_p }}
+                </div>
+                <button id="submit-button" type="submit" class="btn btn-primary">Отправить отзыв</button>
+            </form>
+        {% else %}
+            <div class="alert alert-success mt-4">
+                <h4 class="text-black">Спасибо за ваш отзыв!</h4>
+                <p class="text-black">Вы оставили следующий отзыв:</p>
+                <ul>
+                    {% for key, value in data.items %}
+                        <li><strong>{{ key }}:</strong> {{ value }}</li>
+                    {% endfor %}
+                </ul>
+                <a href="{% url 'home:home' %}" class="btn btn-secondary mt-3">Вернуться на главную</a>
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}

@@ -1,0 +1,10 @@
+{% extends "home/base.html" %}
+
+{% block content %}
+<h2 class="text-black">Вход на сайт</h2>
+<form class="text-black" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-primary">Войти</button>
+</form>
+{% endblock %}

@@ -1,0 +1,18 @@
+{% extends "home/base.html" %}
+{% load static %}
+
+{% block title %}Полезные ссылки{% endblock %}
+
+{% block content %}
+    <header>
+        <h1 class="text-black">Полезные ссылки</h1>
+    </header>
+    <div class="container">
+        <ul>
+            <li><a href="https://www.rolex.com/ru" target="_blank">Официальный сайт Rolex</a> - Узнайте больше о знаменитом бренде.</li>
+            <li><a href="https://www.tagheuer.com/ru" target="_blank">TAG Heuer</a> - Швейцарские часы высокого качества.</li>
+            <li><a href="https://www.casio.com/ru" target="_blank">Casio</a> - Надежные и доступные часы.</li>
+        </ul>
+        <a class="text-black" href="{% url 'home:home' %}">Вернуться на главную</a>
+    </div>
+{% endblock %}

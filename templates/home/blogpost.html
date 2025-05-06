@@ -1,0 +1,52 @@
+{% extends "home/base.html" %}
+{% load static %}
+
+{% block content %}
+<div class="container py-5 text-black">
+  <div class="row justify-content-center">
+    <div class="col-md-10 col-lg-8">
+      <div class="card shadow-sm">
+        {% if watch.image %}
+        <img src="{{ watch.image.url }}" class="card-img-top" style="max-height: 400px; object-fit: cover;" alt="{{ watch.brand }} {{ watch.model }}">
+        {% else %}
+        <img src="{% static 'home/default_watch.jpg' %}" class="card-img-top" style="max-height: 400px; object-fit: cover;" alt="Нет изображения">
+        {% endif %}
+
+        <div class="card-body">
+          <h3 class="card-title">{{ watch.brand }} {{ watch.model }}</h3>
+          <p class="card-text">{{ watch.description }}</p>
+          <hr>
+          <p class="fw-bold">Цена: <span class="text-success">{{ watch.price }} ₽</span></p>
+          <p class="text-muted">Опубликовано: {{ watch.published|date:"d.m.Y H:i" }}</p>
+          <p class="text-muted">Автор: {{ watch.author.username }}</p>
+
+          <a href="{% url 'home:blog' %}" class="btn btn-outline-secondary mt-3">← Назад к каталогу</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <hr>
+<h5>Комментарии</h5>
+
+    {% if comments %}
+    {% for comment in comments %}
+        <div class="border p-2 mb-2 bg-light rounded">
+        <strong>{{ comment.author.username }}</strong> <small class="text-muted">{{ comment.date|date:"d.m.Y H:i" }}</small>
+        <p class="mb-0">{{ comment.text }}</p>
+        </div>
+    {% endfor %}
+    {% else %}
+    <p class="text-muted">Комментариев пока нет.</p>
+    {% endif %}
+
+    {% if user.is_authenticated %}
+    <form method="post" class="mt-4">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn btn-primary">Оставить комментарий</button>
+    </form>
+    {% else %}
+    <p class="mt-3"><a href="{% url 'home:login' %}">Войдите</a>, чтобы оставить комментарий.</p>
+    {% endif %}
+</div>
+{% endblock %}
